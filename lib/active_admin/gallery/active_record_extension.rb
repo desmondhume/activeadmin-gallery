@@ -3,9 +3,7 @@ module ActiveAdmin::Gallery
 
     def has_image(name)
       has_one name,
-        -> { where(imageable_relation: name.to_s) },
-        as: :imageable,
-        class_name: "ActiveAdmin::Gallery::Image"
+        -> { where(imageable_relation: name.to_s) }, as: :imageable, class_name: "ActiveAdmin::Gallery::Image"
 
       define_method "#{name}=" do |image|
         super(image)
@@ -16,10 +14,7 @@ module ActiveAdmin::Gallery
     end
 
     def has_many_images(name)
-      has_many name,
-        -> { where(imageable_relation: name.to_s) },
-        as: :imageable,
-        class_name: "ActiveAdmin::Gallery::Image"
+      has_many name, -> { where(imageable_relation: name.to_s) }, as: :imageable, class_name: "ActiveAdmin::Gallery::Image"
 
       define_method "#{name}=" do |images|
         super(images)
